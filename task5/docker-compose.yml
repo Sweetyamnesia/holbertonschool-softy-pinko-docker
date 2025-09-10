@@ -5,22 +5,22 @@ services:
     build:
       context: ./back-end
       dockerfile: Dockerfile
-    ports:
-      - "5252:5252"
+    expose:
+      - "5252"
 
   front-end:
     build:
       context: ./front-end
       dockerfile: Dockerfile
-    ports:
-      - "9000:9000"
+    expose:
+      - "9000"
 
   proxy:
     build:
       context: ./proxy
       dockerfile: Dockerfile
     ports:
-      - "8080:80"
+      - "80:80"
     depends_on:
       - front-end
       - back-end
